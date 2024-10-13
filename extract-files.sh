@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=generic
+DEVICE=ingres
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
