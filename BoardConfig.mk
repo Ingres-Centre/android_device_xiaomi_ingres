@@ -11,30 +11,35 @@ include device/xiaomi/sm8450-common/BoardConfigCommon.mk
 include vendor/xiaomi/ingres/BoardConfigVendor.mk
 
 DEVICE_PATH := device/xiaomi/ingres
+KERNEL_PATH := device/xiaomi/ingres-kernel
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := ingres
 TARGET_NO_BOOTLOADER := true
 
-# Use prebuilt kernel
-TARGET_PREBUILT_KERNEL := device/xiaomi/ingres/prebuilt/Image
-
-# Kernel
-TARGET_FORCE_PREBUILT_KERNEL := true
-TARGET_NO_KERNEL_OVERRIDE := true
-BOARD_BOOTIMG_HEADER_VERSION := 4
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_KERNEL_IMAGE_NAME := Image
-PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL):kernel
-
-# Disable kernel build from source
-TARGET_KERNEL_CONFIG := 
-TARGET_KERNEL_SOURCE :=
 INLINE_KERNEL_BUILDING := true
 
-# Vendor_dlkm - prebuilt
-TARGET_PREBUILT_VENDOR_DLKM := device/xiaomi/ingres/prebuilt/vendor_dlkm.img
-PRODUCT_COPY_FILES += $(TARGET_PREBUILT_VENDOR_DLKM):vendor_dlkm.img
+# Kernel prebuilt
+BOARD_USES_DT := true
+BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
+
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+TARGET_NO_KERNEL_OVERRIDE := true
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
+
+PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL):kernel
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE :=  $(KERNEL_PATH)/vendor_dlkm/modules.blocklist
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat  $(KERNEL_PATH)/vendor_ramdisk/modules.load))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules.blocklist
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
