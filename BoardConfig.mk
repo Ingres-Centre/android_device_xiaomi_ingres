@@ -10,6 +10,8 @@ include device/xiaomi/sm8450-common/BoardConfigCommon.mk
 # Inherit from the proprietary version
 include vendor/xiaomi/ingres/BoardConfigVendor.mk
 
+
+BUILD_BROKEN_DUP_RULES := true
 DEVICE_PATH := device/xiaomi/ingres
 KERNEL_PATH := device/xiaomi/ingres-kernel
 
