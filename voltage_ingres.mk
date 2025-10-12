@@ -8,9 +8,9 @@
 $(call inherit-product, device/xiaomi/ingres/device.mk)
 
 # Inherit from common lineage configuration
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/voltage/config/common_full_phone.mk)
 
-PRODUCT_NAME := lineage_ingres
+PRODUCT_NAME := voltage_ingres
 PRODUCT_DEVICE := ingres
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_BRAND := Redmi
@@ -23,3 +23,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     SystemName=ingres
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# VoltageOS flags.
+TARGET_FACE_UNLOCK_SUPPORTED := true
+VOLTAGE_BUILD_TYPE := UNOFFICIAL
