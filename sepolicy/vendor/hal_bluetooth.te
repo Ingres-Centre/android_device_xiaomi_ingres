@@ -1,0 +1,4 @@
+#============= hal_bluetooth_default ==============
+allow hal_bluetooth_default vendor_bt_data_file:dir { add_name search write };
+allow hal_bluetooth_default vendor_bt_data_file:file { open read create write };
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:dir { open read };
