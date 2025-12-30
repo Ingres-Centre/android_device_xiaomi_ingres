@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_ingres.mk
+    $(LOCAL_DIR)/infinity_ingres.mk

@@ -1,2 +1,8 @@
 # Xiaomi
 ro.product.mod_device=ingres_global
+
+# Product System Properties
+ro.infinity.soc=Snapdragon 8 Gen 1
+ro.infinity.battery=4700 mAh
+ro.infinity.display=1080 x 2400, 120 Hz
+ro.infinity.camera=64MP + 8MP + 2MP + 20MP
