@@ -21,4 +21,13 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- LEDs -->
+    <hal format="aidl" optional="true">
+        <name>vendor.lineage.leds</name>
+        <version>1</version>
+        <interface>
+            <name>ILeds</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>

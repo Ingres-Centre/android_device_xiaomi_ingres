@@ -1,0 +1,12 @@
+service vendor.lineage_leds /vendor/bin/hw/vendor.lineage.leds-service.default
+	class hal
+	user system
+	group system
+
+on boot
+    chown system system /sys/class/leds/aw22xxx_led/hwen
+    chown system system /sys/class/leds/aw22xxx_led/brightness
+    chown system system /sys/class/leds/aw22xxx_led/effect
+    chown system system /sys/class/leds/aw22xxx_led/cfg
+    chown system system /sys/class/leds/aw22xxx_led/rgb
+    chown system system /sys/class/leds/aw22xxx_led/frq

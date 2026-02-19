@@ -1,0 +1,38 @@
+android_app {
+    name: "Leds",
+    package_name: "org.lineageos.leds",
+    manifest: "AndroidManifest.xml",
+    srcs: ["kotlin/**/*.kt"],
+    resource_dirs: ["res"],
+    platform_apis: true,
+    privileged: true,
+    system_ext_specific: true,
+    certificate: "platform",
+    static_libs: [
+        "androidx.activity_activity-compose",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-graphics",
+        "androidx.compose.ui_ui-tooling-preview",
+        "androidx.compose.material_material-icons-core",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.material3_material3",
+        "androidx.compose.runtime_runtime",
+        "androidx.core_core-ktx",
+        "androidx.lifecycle_lifecycle-runtime-ktx",
+        "androidx.datastore_datastore",
+        "libprotobuf-java-lite",
+        "LedsProto",
+        "vendor.lineage.leds-V1-java",
+    ],
+}
+
+java_library {
+    name: "LedsProto",
+    srcs: ["proto/**/*.proto"],
+    proto: {
+        type: "lite",
+    },
+    installable: false,
+}
+

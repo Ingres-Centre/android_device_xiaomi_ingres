@@ -3,3 +3,6 @@
 
 # TouchInjector HAL
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touchinjector-service\.default u:object_r:hal_lineage_touchinjector_default_exec:s0
+
+# LEDs HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.leds-service\.default u:object_r:hal_lineage_leds_default_exec:s0

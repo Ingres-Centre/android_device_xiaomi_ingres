@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="false">LEDs</string>
+    <string name="led_hwen_title">Enabled</string>
+    <string name="led_effect_title">Effect</string>
+    <string name="led_use_own_values_title">Use own values</string>
+    <string name="led_use_own_values_description">Replace default colors and freq by own</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="led_frq_title">Frequency</string>
+    <string name="cat_own_values">Own values</string>
+    <string name="led_rgb_title">Color #%1$d</string>
+    <string name="cat_application">Application</string>
+    <string name="led_use_saved_settings_title">Use saved settings</string>
+    <string name="led_use_saved_settings_description">Apply saved settings after reboot</string>
+    <string name="back">Back</string>
+</resources>

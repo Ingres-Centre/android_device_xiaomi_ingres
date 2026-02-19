@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "org.lineageos.leds";
+option java_multiple_files = true;
+
+message Settings {
+  bool restore_on_reboot = 1;
+
+  bool enabled = 2;
+
+  uint32 effect = 3;
+  uint32 frequency = 4;
+
+  bool use_custom_colors = 5;
+  map<uint32, uint32> colors = 6;
+}
