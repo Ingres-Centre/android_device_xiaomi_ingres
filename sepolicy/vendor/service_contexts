@@ -1,0 +1,2 @@
+vendor.lineage.gamekeys.IGameKeys/default                      u:object_r:hal_lineage_gamekeys_service:s0
+vendor.lineage.touchinjector.ITouchInjector/default            u:object_r:hal_lineage_touchinjector_service:s0

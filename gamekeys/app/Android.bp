@@ -1,0 +1,50 @@
+android_app {
+    name: "GameKeys",
+    package_name: "org.lineageos.gamekeys",
+    manifest: "AndroidManifest.xml",
+    srcs: ["kotlin/**/*.kt"],
+    resource_dirs: ["res"],
+    platform_apis: true,
+    privileged: true,
+    system_ext_specific: true,
+    certificate: "platform",
+    static_libs: [
+        "androidx.activity_activity-compose",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-graphics",
+        "androidx.compose.ui_ui-tooling-preview",
+        "androidx.compose.material_material-icons-core",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.material3_material3",
+        "androidx.compose.runtime_runtime",
+        "androidx.core_core-ktx",
+        "androidx.lifecycle_lifecycle-runtime-ktx",
+        "androidx.datastore_datastore",
+        "libprotobuf-java-lite",
+        "GameKeysProto",
+        "vendor.lineage.gamekeys-V1-java",
+        "vendor.lineage.touchinjector-V1-java",
+    ],
+    required: [
+        "privapp-org.lineageos.gamekeys.xml",
+    ],
+}
+
+java_library {
+    name: "GameKeysProto",
+    srcs: ["proto/**/*.proto"],
+    proto: {
+        type: "lite",
+    },
+    installable: false,
+}
+
+prebuilt_etc_xml {
+    name: "privapp-org.lineageos.gamekeys.xml",
+    src: "privapp-org.lineageos.gamekeys.xml",
+    filename_from_src: true,
+    system_ext_specific: true,
+    sub_dir: "permissions",
+}
+

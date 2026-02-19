@@ -1,0 +1,73 @@
+/*
+ * Copyright (C) 2022-2025 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+soong_config_module_type {
+    name: "touchinjector_config_genrule",
+    module_type: "genrule",
+    config_namespace: "touchinjector",
+    value_variables: [
+        "source_device_name",
+        "additional_slots_count",
+    ],
+    properties: ["cmd"],
+}
+
+touchinjector_config_genrule {
+    name: "touchinjector_source_device_name_rs",
+    out: [ "cfg_source_device_name.rs" ],
+
+    cmd: "printf 'pub const SRC_DEV_NAME: &str = \"fts\";\\n' > $(out)",
+
+    soong_config_variables: {
+        source_device_name: {
+            cmd: "printf 'pub const SRC_DEV_NAME: &str = \"%s\";\\n' > $(out)",
+        },
+    },
+}
+
+touchinjector_config_genrule {
+    name: "touchinjector_additional_slots_count_rs",
+    out: [ "cfg_additional_slots_count.rs" ],
+
+    cmd: "printf 'pub const ADD_SLOT_COUNT: usize = 10;\\n' > $(out)",
+
+    soong_config_variables: {
+        additional_slots_count: {
+            cmd: "printf 'pub const ADD_SLOT_COUNT: usize = %s;\\n' > $(out)",
+        },
+    },
+}
+
+rust_binary {
+    name: "vendor.lineage.touchinjector-service.default",
+    relative_install_path: "hw",
+    vendor: true,
+    lints: "vendor",
+    clippy_lints: "vendor",
+    init_rc: ["vendor.lineage.touchinjector-service.default.rc"],
+    vintf_fragments: ["vendor.lineage.touchinjector-service.default.xml"],
+    rustlibs: [
+        "libanyhow",
+        "libtokio",
+        "libtokio_util",
+        "libevdev",
+        "librustutils",
+        "liblogger",
+        "liblog_rust",
+        "libbinder_rs",
+        "libbinder_tokio_rs",
+        "libfutures",
+        "libtokio_stream",
+        "vendor.lineage.touchinjector-V1-rust",
+    ],
+    proc_macros: ["libasync_trait"],
+    shared_libs: ["libcutils"],
+    srcs: [
+        "main.rs",
+        ":touchinjector_source_device_name_rs",
+        ":touchinjector_additional_slots_count_rs",
+    ],
+}

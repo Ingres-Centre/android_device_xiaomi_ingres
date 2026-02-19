@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Необходим для изменения настроек в зависимости от текущего открытого приложения.</string>
+    <string name="overlay_channel_name">Статус оверлея</string>
+    <string name="overlay_channel_description">Уведомление о запущеном оверлея</string>
+    <string name="overlay_status_title">Оверлей запущен…</string>
+    <string name="overlay_status_desc">Игнорируй это ;)</string>
+    <string name="overlay_warn_will_not_be_saved">Вы изменяете настройки для исключённого приложения, и они не будут сохранены.\nДля изменения настроек перейдите в другое приложение.</string>
+</resources>

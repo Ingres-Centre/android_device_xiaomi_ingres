@@ -1,0 +1,4 @@
+service vendor.lineage_touchinjector /vendor/bin/hw/vendor.lineage.touchinjector-service.default
+	class hal
+	user system
+	group system input uhid

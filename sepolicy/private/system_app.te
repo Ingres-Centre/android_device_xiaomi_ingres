@@ -1,0 +1,3 @@
+# Allow access to the HALs
+hal_client_domain(system_app, hal_lineage_gamekeys)
+hal_client_domain(system_app, hal_lineage_touchinjector)

@@ -1,0 +1,5 @@
+# GameKeys HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.gamekeys-service\.default u:object_r:hal_lineage_gamekeys_default_exec:s0
+
+# TouchInjector HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touchinjector-service\.default u:object_r:hal_lineage_touchinjector_default_exec:s0

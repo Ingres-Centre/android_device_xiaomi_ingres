@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "org.lineageos.gamekeys.proto";
+option java_multiple_files = true;
+
+message Position {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message GameKey {
+  bool enabled = 1;
+  Position pos = 2;
+}
+
+message PerAppSettings {
+  GameKey upper = 1;
+  GameKey lower = 2;
+}
+
+message Settings {
+  map<string, PerAppSettings> apps = 1;
+}

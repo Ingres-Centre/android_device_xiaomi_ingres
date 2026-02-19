@@ -1,0 +1,29 @@
+/*
+ * Copyright (C) 2022-2025 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+rust_binary {
+    name: "vendor.lineage.gamekeys-service.default",
+    relative_install_path: "hw",
+    vendor: true,
+    lints: "vendor",
+    clippy_lints: "vendor",
+    init_rc: ["vendor.lineage.gamekeys-service.default.rc"],
+    vintf_fragments: ["vendor.lineage.gamekeys-service.default.xml"],
+    rustlibs: [
+        "libtokio",
+        "libevdev",
+        "librustutils",
+        "liblogger",
+        "liblog_rust",
+        "libbinder_rs",
+        "libbinder_tokio_rs",
+        "libfutures",
+        "vendor.lineage.gamekeys-V1-rust"
+    ],
+    proc_macros: ["libasync_trait"],
+    shared_libs: ["libcutils"],
+    srcs: ["main.rs"],
+}

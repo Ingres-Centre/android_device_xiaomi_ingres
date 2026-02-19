@@ -1,0 +1,3 @@
+# HALs
+hal_attribute_lineage(lineage_gamekeys)
+hal_attribute_lineage(lineage_touchinjector)

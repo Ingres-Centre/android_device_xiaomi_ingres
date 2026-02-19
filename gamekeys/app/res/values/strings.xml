@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">GameKeys</string>
+    <string name="accessibility_service_label" translatable="false">GameKeys</string>
+    <string name="accessibility_service_description">Necessary to change settings depending on the currently open application.</string>
+
+    <string name="overlay_channel_name">Overlay status</string>
+    <string name="overlay_channel_description">Status notifications for overlay</string>
+    <string name="overlay_status_title">Overlay is running…</string>
+    <string name="overlay_status_desc">Ignore this ;)</string>
+    <string name="overlay_warn_will_not_be_saved">You changing the settings for the excluded application, but they will not be saved.\nTo change the settings, go to another application.</string>
+</resources>

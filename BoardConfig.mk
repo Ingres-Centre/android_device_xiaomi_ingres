@@ -15,6 +15,10 @@ include vendor/xiaomi/ingres/BoardConfigVendor.mk
 
 DEVICE_PATH := device/xiaomi/ingres
 
+# Kernel modules
+vendor_dlkm_exclusive_modules_ingres := $(strip $(shell cat $(DEVICE_PATH)/modules.list.vendor_dlkm))
+BOARD_VENDOR_KERNEL_MODULES_LOAD += $(vendor_dlkm_exclusive_modules_ingres)
+
 # Audio
 AUDIO_FEATURE_ENABLED_CIRRUS_CALIBRATION_RESISTANCE := true
 AUDIO_FEATURE_ENABLED_ULTRASOUND_PROXIMITY := true
@@ -25,3 +29,11 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 
 # Screen density
 TARGET_SCREEN_DENSITY := 395
+
+# SELinux
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
+# VINTF
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/vintf/compatibility_matrix.xml

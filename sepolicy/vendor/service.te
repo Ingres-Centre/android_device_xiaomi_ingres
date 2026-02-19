@@ -1,0 +1,2 @@
+type hal_lineage_gamekeys_service, hal_service_type, service_manager_type;
+type hal_lineage_touchinjector_service, hal_service_type, service_manager_type;
