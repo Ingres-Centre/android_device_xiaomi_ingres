@@ -1,0 +1,1 @@
+allow mediacodec adaptive_haptics_prop:file { getattr map open };

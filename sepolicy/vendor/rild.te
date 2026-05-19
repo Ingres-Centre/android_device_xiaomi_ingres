@@ -1,0 +1,2 @@
+allow rild vendor_ssr_prop:file { getattr map open read };
+allow rild vendor_ssr_prop:property_service set;
