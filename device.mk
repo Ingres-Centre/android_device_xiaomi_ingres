@@ -31,6 +31,9 @@ PRODUCT_PACKAGES += \
     vendor.lineage.touchinjector-service.default \
     GameKeys
 
+$(call soong_config_set,touchinjector,source_device_name,fts)
+$(call soong_config_set,touchinjector,additional_slots_count,2)
+
 # Leds
 PRODUCT_PACKAGES += \
     vendor.lineage.leds-service.default \
