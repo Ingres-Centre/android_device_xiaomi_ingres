@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
     SettingsProviderResIngres \
     WifiResIngres \
     FrameworksResIngres \
+		SettingsResIngres \
     SystemUIResIngres \
     ApertureResIngres \
     NfcResIngres
