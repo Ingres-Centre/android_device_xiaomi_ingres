@@ -10,6 +10,9 @@ VENDOR_SECURITY_PATCH := 2025-04-01
 # Inherit from xiaomi sm8450-common
 include device/xiaomi/sm8450-common/BoardConfigCommon.mk
 
+# Use voltage reserved size config
+include vendor/voltage/config/BoardConfigReservedSize.mk
+
 # Inherit from the proprietary version
 include vendor/xiaomi/ingres/BoardConfigVendor.mk
 
