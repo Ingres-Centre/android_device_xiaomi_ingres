@@ -49,10 +49,6 @@ blob_fixups: blob_fixups_user_type = {
     .clear_symbol_version('AHardwareBuffer_lockPlanes')
     .clear_symbol_version('AHardwareBuffer_release')
     .clear_symbol_version('AHardwareBuffer_unlock'),
-    'vendor/lib64/libcamximageformatutils.so': blob_fixup().replace_needed(
-        'vendor.qti.hardware.display.config-V2-ndk_platform.so',
-        'vendor.qti.hardware.display.config-V2-ndk.so',
-    ),
     'vendor/lib64/libmialgo_pureShot.so': blob_fixup()
     .clear_symbol_version('remote_handle64_close')
     .clear_symbol_version('remote_handle64_invoke')
