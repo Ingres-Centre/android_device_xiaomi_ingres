@@ -40,10 +40,21 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libcamxcommonutils.so',
         'vendor/lib64/libmialgoengine.so',
     ): blob_fixup().add_needed('libprocessgroup_shim.so'),
-    (
-        'vendor/lib64/libTrueSight.so',
-        'vendor/lib64/libmorpho_ubwc.so',
-    ): blob_fixup()
+    # Compile embedded color-conversion GLSL instead of opening its cached binary.
+    # Replace BL fopen with MOV X0, XZR; the following CBZ selects the source path.
+    'vendor/lib64/libTrueSight.so': blob_fixup()
+    .binary_regex_replace(
+        b'\xb5\x9e\xfd\x97\x00\x06\x00\xb4\xbf\x9e\xfd\x97',
+        b'\xe0\x03\x1f\xaa\x00\x06\x00\xb4\xbf\x9e\xfd\x97',
+    )
+    .clear_symbol_version('AHardwareBuffer_allocate')
+    .clear_symbol_version('AHardwareBuffer_describe')
+    .clear_symbol_version('AHardwareBuffer_isSupported')
+    .clear_symbol_version('AHardwareBuffer_lock')
+    .clear_symbol_version('AHardwareBuffer_lockPlanes')
+    .clear_symbol_version('AHardwareBuffer_release')
+    .clear_symbol_version('AHardwareBuffer_unlock'),
+    'vendor/lib64/libmorpho_ubwc.so': blob_fixup()
     .clear_symbol_version('AHardwareBuffer_allocate')
     .clear_symbol_version('AHardwareBuffer_describe')
     .clear_symbol_version('AHardwareBuffer_isSupported')
