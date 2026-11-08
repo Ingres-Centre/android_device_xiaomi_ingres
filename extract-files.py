@@ -26,7 +26,11 @@ namespace_imports = [
 
 blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/hw/camera.qcom.so': blob_fixup()
-        .add_needed('libcamximageformatutils_shim.so'),
+        .add_needed('libcamximageformatutils_shim.so')
+        .binary_regex_replace(
+            b'_ZN4CamX16ImageFormatUtils9GetFormatERNS_17GrallocPropertiesERNS_6FormatE',
+            b'_ZN4CamX16ImageFormatUtils9GetXiaomiERNS_17GrallocPropertiesERNS_6FormatE',
+        ),
     (
         'vendor/etc/camera/ingres_enhance_motiontuning.xml',
         'vendor/etc/camera/ingres_motiontuning.xml',
